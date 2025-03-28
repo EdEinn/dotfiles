@@ -1,0 +1,16 @@
+frame = "transparent"
+tabs = true
+idle = true
+title-hidden = true
+no-multigrid = false
+srgb = false
+vsync = true
+
+
+[font]
+normal = [
+    # "UbuntuMono Nerd Font Mono:Light"
+    "CodeNewRoman Nerd Font Mono",
+    "Heiti SC",
+]
+size = 24

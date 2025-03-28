@@ -1,0 +1,10 @@
+tags
+test.sh
+.luarc.json
+nvim
+.DS_Store
+*/.DS_Store
+**/.DS_Store
+
+spell/
+lazy-lock.json
