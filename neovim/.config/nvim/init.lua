@@ -170,6 +170,12 @@ vim.opt.scrolloff = 10
 -- See `:help 'confirm'`
 vim.opt.confirm = true
 
+-- delete the default keymap
+vim.keymap.del('n', 'grn')
+vim.keymap.del('n', 'grr')
+vim.keymap.del('n', 'gri')
+vim.keymap.del('n', 'gra')
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -187,7 +193,8 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+-- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -1229,11 +1236,38 @@ require('lazy').setup({
 
 -- neovide config
 if vim.g.neovide then
-  vim.g.neovide_transparency = 0.8
+  vim.g.neovide_opacity = 1
+  vim.g.neovide_normal_opacity = 0.8
   vim.g.neovide_fullscreen = false
+  vim.g.neovide_remember_window_size = true
   -- vim.g.neovide_theme = 'auto'
 
+  -----------------------------------------
+  local function set_ime(args)
+    if args.event:match 'Enter$' then
+      vim.g.neovide_input_ime = true
+    else
+      vim.g.neovide_input_ime = false
+    end
+  end
+
+  local ime_input = vim.api.nvim_create_augroup('ime_input', { clear = true })
+
+  vim.api.nvim_create_autocmd({ 'InsertEnter', 'InsertLeave' }, {
+    group = ime_input,
+    pattern = '*',
+    callback = set_ime,
+  })
+
+  vim.api.nvim_create_autocmd({ 'CmdlineEnter', 'CmdlineLeave' }, {
+    group = ime_input,
+    pattern = '[/\\?]',
+    callback = set_ime,
+  })
+  -----------------------------------------
+
   vim.g.neovide_refresh_rate_idle = 5
-  vim.g.neovide_text_gamma = 0.0
-  vim.g.neovide_text_contrast = 0.5
+  vim.g.neovide_hide_mouse_when_typing = true
+  -- vim.g.neovide_text_gamma = 1.0
+  -- vim.g.neovide_text_contrast = 1.0
 end

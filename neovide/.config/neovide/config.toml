@@ -1,16 +1,24 @@
+fork = true
 frame = "transparent"
-tabs = true
 idle = true
-title-hidden = true
+maximized = false
+mouse-cursor-icon = "arrow"
 no-multigrid = false
-srgb = false
+srgb = true
+tabs = true
+theme = "auto"
+title-hidden = true
 vsync = true
-
+wsl = false
 
 [font]
 normal = [
     # "UbuntuMono Nerd Font Mono:Light"
     "CodeNewRoman Nerd Font Mono",
-    "Heiti SC",
+    # "Heiti SC",
 ]
 size = 24
+
+[box-drawing]
+# "font-glyph", "native" or "selected-native"
+mode = "native"

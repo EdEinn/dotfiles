@@ -1,19 +1,6 @@
-## file structure
-~/dotfiles/  
-├── git/  
-│   └── .gitconfig  
-├── zsh/  
-│   └── .zshrc  
-├── neovim/  
-│   └── .config/  
-│       └── nvim/  
-│           ├── init.vim  
-│           └── ...  
-└── .gitignore  
-
 ## Usage for MacOS
 
-```zsh
+```bash
 cd ~
 git clone ...
 cd ~/dotfiles

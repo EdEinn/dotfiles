@@ -4,7 +4,6 @@ alias py=python3
 alias python=python3
 alias gitlog="git log --all --graph --decorate --oneline"
 alias aseprite="~/aseprite/build/bin/aseprite &"
-alias neovide="neovide &"
 alias imgcat="wezterm imgcat"
 alias cat="bat --theme=zenburn"
 # alias ls="eza --icons=always" in .zshrc file
