@@ -88,24 +88,6 @@ return {
     end,
   },
 
-  -- rust crates version info
-  {
-    'saecki/crates.nvim',
-    ft = { 'toml' },
-    config = function()
-      require('crates').setup {
-        completion = {
-          cmp = {
-            enabled = true,
-          },
-        },
-      }
-      require('cmp').setup.buffer {
-        sources = { { name = 'crates' } },
-      }
-    end,
-  },
-
   -- rust code suggestions and code completion and inline error
   {
     'mrcjkb/rustaceanvim',
