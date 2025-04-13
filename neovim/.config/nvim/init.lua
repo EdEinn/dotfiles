@@ -509,6 +509,7 @@ require('lazy').setup({
       },
     },
   },
+
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
@@ -753,6 +754,13 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'clangd',
+        'codelldb',
+        'delve',
+        'gopls',
+        'lua-language-server',
+        'rust_analyzer',
+        'texlab',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -1084,22 +1092,18 @@ require('lazy').setup({
     end,
   },
 
+  -- leetcode.nvim config
   {
     'kawre/leetcode.nvim',
-
-    build = ':TSUpdate html',
+    build = ':TSUpdate html', -- if you have `nvim-treesitter` installed
     dependencies = {
       'nvim-telescope/telescope.nvim',
+      -- "ibhagwan/fzf-lua",
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
-
-      'nvim-treesitter/nvim-treesitter',
-
-      'nvim-tree/nvim-web-devicons',
     },
     opts = {
-      cn = {},
-      lang = 'rust',
+      lang = 'cpp',
     },
   },
 
@@ -1107,15 +1111,13 @@ require('lazy').setup({
     'xiyaowong/transparent.nvim',
   },
 
+  -- Highlight todo, notes, etc in comments
   {
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = { signs = false },
   },
-
-  -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',

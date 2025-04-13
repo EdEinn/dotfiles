@@ -22,6 +22,7 @@ return {
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
+    -- go debgger plugin
     'leoluz/nvim-dap-go',
   },
   keys = {
