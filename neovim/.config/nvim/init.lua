@@ -275,31 +275,6 @@ require('lazy').setup({
   --
   -- See `:help gitsigns` to understand what the configuration keys do
 
-  -- hop(easy motion)
-  {
-    'smoka7/hop.nvim',
-    version = '*',
-    config = function()
-      require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
-
-      local hop = require 'hop'
-      local directions = require('hop.hint').HintDirection
-      vim.keymap.set('', 'f', function()
-        hop.hint_char1 { direction = directions.AFTER_CURSOR, current_line_only = true }
-      end, { remap = true })
-      vim.keymap.set('', 'F', function()
-        hop.hint_char1 { direction = directions.BEFORE_CURSOR, current_line_only = true }
-      end, { remap = true })
-
-      vim.keymap.set('n', '<leader>j', ':HopChar2MW<cr>')
-
-      vim.keymap.set('n', '<leader>k', ':HopWord<cr>')
-    end,
-  },
-
-  -- gcc to comment
-  { 'numToStr/Comment.nvim', opts = {} },
-
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -826,55 +801,6 @@ require('lazy').setup({
     },
   },
 
-  -- rust code suggestions and code completion and inline error
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^5', -- Recommended
-    lazy = false, -- This plugin is already lazy
-    config = function()
-      -- RustaceanVim setup for Rust debugging
-      local mason_registry = require 'mason-registry'
-      local codelldb = mason_registry.get_package 'codelldb'
-      local extension_path = codelldb:get_install_path() .. '/extension/'
-      local codelldb_path = extension_path .. 'adapter/codelldb'
-      local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
-      local cfg = require 'rustaceanvim.config'
-
-      vim.g.rustaceanvim = {
-        dap = {
-          adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
-        },
-      }
-    end,
-  },
-
-  -- rust auto fmt
-  {
-    'rust-lang/rust.vim',
-    ft = 'rust',
-    init = function()
-      vim.g.rustfmt_autosave = 1
-    end,
-  },
-
-  -- crates version info
-  {
-    'saecki/crates.nvim',
-    ft = { 'toml' },
-    config = function()
-      require('crates').setup {
-        completion = {
-          cmp = {
-            enabled = true,
-          },
-        },
-      }
-      require('cmp').setup.buffer {
-        sources = { { name = 'crates' } },
-      }
-    end,
-  },
-
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -1016,101 +942,6 @@ require('lazy').setup({
     end,
   },
 
-  {
-    'sainnhe/gruvbox-material',
-    lazy = false,
-    priority = 1000,
-
-    config = function()
-      vim.o.background = 'dark'
-      vim.g.gruvbox_material_background = 'hard'
-      vim.g.gruvbox_material_foreground = 'mix'
-      vim.g.gruvbox_material_better_performance = 1
-      --vim.g.gruvbox_material_enable_italic = 1
-      vim.g.gruvbox_material_enable_bold = 1
-      vim.cmd.colorscheme 'gruvbox-material'
-    end,
-  },
-
-  {
-    'sainnhe/everforest',
-    lazy = false,
-    priority = 1000,
-
-    -- config = function()
-    --   vim.o.background = 'dark'
-    --   vim.g.everforest_background = 'medium'
-    --   vim.g.everforest_better_performance = 1
-    --   -- vim.g.everforest_enable_italic = 1
-    --   vim.g.everforest_enable_bold = 1
-    --   vim.cmd.colorscheme 'everforest'
-    -- end,
-  },
-
-  {
-    'EdenEast/nightfox.nvim',
-
-    -- init = function()
-    --   vim.cmd 'colorscheme carbonfox'
-    --   vim.cmd 'colorscheme nightfox'
-    --   vim.cmd 'colorscheme dayfox'
-    --   vim.cmd 'colorscheme dawnfox'
-    --   vim.cmd 'colorscheme duskfox'
-    --   vim.cmd 'colorscheme nordfox'
-    --   vim.cmd 'colorscheme terafox'
-    -- end,
-  },
-
-  {
-    'iamcco/markdown-preview.nvim',
-    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-    build = 'cd app && yarn install',
-    init = function()
-      vim.g.mkdp_filetypes = { 'markdown' }
-    end,
-    ft = { 'markdown' },
-  },
-
-  {
-    'lervag/vimtex',
-    lazy = false,
-    -- tag = "v2.15", -- uncomment to pin to a specific release
-
-    init = function()
-      vim.g.vimtex_view_method = 'skim'
-      vim.g.vimtex_compiler_method = 'latexmk'
-      vim.g.vimtex_compiler_latexmk = {
-        executable = 'latexmk',
-        options = {
-          '-xelatex',
-          '-verbose',
-          '-file-line-error',
-          '-synctex=1',
-          '-interaction=nonstopmode',
-        },
-      }
-    end,
-  },
-
-  -- leetcode.nvim config
-  {
-    'kawre/leetcode.nvim',
-    build = ':TSUpdate html', -- if you have `nvim-treesitter` installed
-    dependencies = {
-      'nvim-telescope/telescope.nvim',
-      -- "ibhagwan/fzf-lua",
-      'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
-    },
-    opts = {
-      lang = 'cpp',
-    },
-  },
-
-  {
-    'xiyaowong/transparent.nvim',
-  },
-
   -- Highlight todo, notes, etc in comments
   {
     'folke/todo-comments.nvim',
@@ -1205,7 +1036,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
