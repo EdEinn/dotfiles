@@ -52,3 +52,6 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # "Ctrl t" useage, "** <tab>" useage, "Ctrl r"useage, "Ctrl jk or np"
 source <(fzf --zsh)
+
+# Added by Windsurf
+export PATH="/Users/edein/.codeium/windsurf/bin:$PATH"

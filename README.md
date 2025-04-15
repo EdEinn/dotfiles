@@ -1,12 +1,21 @@
 ## Usage for MacOS
 
+### Tools
+The tools you need to install:
+- stow
+- Of course you need install neovim, neovide, wezterm, tmux.
+- The tools that kickstart.nvim requires(for neovim)
+
+### Install
 ```bash
 cd ~
-git clone ...
+git clone https://github.com/EdEinn/dotfiles.git
 cd ~/dotfiles
-stow git
 stow zsh
 stow neovim
+stow neovide
+stow wezterm
+stow tmux
 ```
-> ~/dotfiles/git/.gitconfig will be linked to ~/.gitconfig
+> ~/dotfiles/neovim/.config/nvim will be linked to ~/.config/nvim etc..
 
