@@ -9,10 +9,8 @@ local themes = {
 	"Dracula",
 	"Catppuccin Macchiato",
 	"Tokyo Night",
-	"Horizon Dark",
 	"Sonokai (Gogh)",
-	"Everforest Dark (Gogh)",
-	"flexoki-dark",
+	"Catppuccin Mocha",
 }
 math.randomseed(os.time())
 local random_theme = themes[math.random(#themes)]

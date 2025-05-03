@@ -3,7 +3,7 @@
 ### Tools
 The tools you need to install:
 - stow
-- Of course you need install neovim, neovide, wezterm, tmux.
+- neovim, neovide, wezterm, tmux.
 - The tools that kickstart.nvim requires(for neovim)
 
 ### Install
