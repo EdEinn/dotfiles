@@ -2,7 +2,20 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+
+-- Tab setting
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.softtabstop = 4
+
+-- 'Ctrl ]'
+vim.o.jumpoptions = 'stack'
+
 return {
+  -- Diagnostic keymaps
+  vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' }),
+
   -- gcc to comment
   { 'numToStr/Comment.nvim', opts = {} },
 

@@ -44,14 +44,14 @@ return {
     'catppuccin/nvim',
     lazy = false,
     priority = 1000,
-    config = function()
-      local flavours = { 'latte', 'frappe', 'macchiato', 'mocha' }
-      local random_flavour = flavours[math.random(#flavours)]
-      require('catppuccin').setup {
-        flavour = random_flavour,
-      }
-      vim.cmd.colorscheme 'catppuccin'
-    end,
+    -- config = function()
+    --   local flavours = { 'latte', 'frappe', 'macchiato', 'mocha' }
+    --   local random_flavour = flavours[math.random(#flavours)]
+    --   require('catppuccin').setup {
+    --     flavour = random_flavour,
+    --   }
+    --   vim.cmd.colorscheme 'catppuccin'
+    -- end,
   },
 
   { -- You can easily change to a different colorscheme.
@@ -72,12 +72,7 @@ return {
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-
-      -- vim.cmd.colorscheme 'tokyonight-night'
-
-      -- local tokyothemes = { 'tokyonight-storm', 'tokyonight-moon', 'tokyonight-night' }
-      -- local random_theme = tokyothemes[math.random(#tokyothemes)]
-      -- vim.cmd.colorscheme(random_theme)
+      vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
 }
