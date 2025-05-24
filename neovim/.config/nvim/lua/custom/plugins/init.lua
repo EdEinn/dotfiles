@@ -7,15 +7,12 @@
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
-vim.o.softtabstop = 4
+vim.o.softtabstop = -1
 
 -- 'Ctrl ]'
 vim.o.jumpoptions = 'stack'
 
 return {
-  -- Diagnostic keymaps
-  vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' }),
-
   -- gcc to comment
   { 'numToStr/Comment.nvim', opts = {} },
 
